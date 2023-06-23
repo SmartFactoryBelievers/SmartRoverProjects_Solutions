@@ -19,13 +19,14 @@ while True:
         print("New File Status:  ", end='')
         subprocess.call(["systemctl","is-enabled","ft-test3.service"])
         print() # this is to leave a space between lines
-        print("The file status is now correctly set. A test picture will be taken.")
-        print("The testcam.jpg can be opened in the window that just popped up.")
-        print("You can delete testcam.jpg once it's been validated.")
-        folder_path = "/home/pi"
-        os.chdir(folder_path)
-        subprocess.call(["sudo","raspistill","-o","testcam.jpg"]) 
-        subprocess.run(["xdg-open",folder_path])
+        print("The file status is now correctly set. System reboot required to complete the update.")
+        response = input("Allow system reboot ? (y/n):  ")
+            
+        # comment here
+            if response.lower() == 'y': subprocess.call(["sudo","reboot"])
+
+            if response.lower() == 'n': print("System reboot failed")
+
         break # this quits the program
 # comment here
     elif response.lower() == 'n':
