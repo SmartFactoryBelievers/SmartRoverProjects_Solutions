@@ -1,3 +1,5 @@
+# Program to automatically fix camera issues with the camera in the Raspberry Pi
+
 import subprocess, os
 # comment here
 print("File Status:  ", end='')
