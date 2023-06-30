@@ -26,10 +26,10 @@ from time import sleep
 import RPi.GPIO as GPIO
 
 #Let's define variables so we can use them later
-A_Pin = 40 #the internal Pi pin number that goes to snap 7
-C_Pin = 38 #the internal Pi pin number that goes to snap 6
-LED_Pin = 12 #the internal Pi pin number that goes to snap 3
-Buzzer_Pin = 35 #the internal Pi pin number that goes to snap 4
+A_Pin = 7 #the internal Pi pin number that goes to snap 7
+C_Pin = 18 #the internal Pi pin number that goes to snap 6
+LED_Pin = 26 #the internal Pi pin number that goes to snap 3
+Buzzer_Pin = 21 #the internal Pi pin number that goes to snap 4
 
 # For challenge 1, we can try different values here to blink in new patterns
 Pin_On = 3 #duration of LED flash, seconds
