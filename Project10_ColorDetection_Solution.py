@@ -26,9 +26,11 @@ from picamera import PiCamera
 import numpy as np
 
 #Let's define variables so we can use them later
-LED_Pin = 35 #the internal Pi pin number that goes to snap 4
-Buzzer_Pin = 12 #the internal Pi pin number that goes to snap 3
-Button_Pin = 38 #the internal Pi pin number that goes to snap 6
+#------------------------ CHALLENGE 1: SWAP THE POSITION OF THE LED AND BUZZER IN THE CODE & ON THE ROVER ----------------------
+LED_Pin = 21 #the internal Pi pin number that goes to snap 4
+Buzzer_Pin = 26 #the internal Pi pin number that goes to snap 3
+Button_Pin = 18 #the internal Pi pin number that goes to snap 6
+#-------------------------------------- END OF CHALLENGE 1 ------------------------------------------
 
 #Setting up our pins
 GPIO.setmode(GPIO.BOARD)
