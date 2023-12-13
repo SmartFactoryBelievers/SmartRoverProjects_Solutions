@@ -19,10 +19,10 @@ from time import sleep
 import RPi.GPIO as GPIO
 
 #Let's define variables so we can use them later
-Left_Forward_Pin = 36 #the internal Pi pin number that goes to snap 1
-Left_Backward_Pin = 11 #the internal Pi pin number that goes to snap 2
-Right_Forward_Pin = 12 #the internal Pi pin number that goes to snap 3
-Right_Backward_Pin = 35 #the internal Pi pin number that goes to snap 4
+Left_Forward_Pin = 35 #the internal Pi pin number that goes to snap 1
+Left_Backward_Pin = 31 #the internal Pi pin number that goes to snap 2
+Right_Forward_Pin = 26 #the internal Pi pin number that goes to snap 3
+Right_Backward_Pin = 21 #the internal Pi pin number that goes to snap 4
 
 #Here we can define the timing variables for the driving functions, in seconds
 # For challenge 1, we can try different values here to drive in new patterns
