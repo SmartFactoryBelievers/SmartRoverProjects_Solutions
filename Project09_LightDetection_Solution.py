@@ -29,8 +29,8 @@ import cv2
 import numpy as np
 
 #Let's define variables so we can use them later
-LED_Pin = 35 #the internal Pi pin number that goes to snap 4
-Buzzer_Pin = 12 #the internal Pi pin number that goes to snap 3
+LED_Pin = 21 #the internal Pi pin number that goes to snap 4
+Buzzer_Pin = 26 #the internal Pi pin number that goes to snap 3
 
 #Setting up our pins
 GPIO.setmode(GPIO.BOARD)
