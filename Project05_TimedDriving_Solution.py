@@ -25,11 +25,11 @@ import RPi.GPIO as GPIO
 import time
 
 #Let's define variables so we can use them later
-Left_Forward_Pin = 36 #the internal Pi pin number that goes to snap 1
-Left_Backward_Pin = 11 #the internal Pi pin number that goes to snap 2
-Right_Forward_Pin = 12 #the internal Pi pin number that goes to snap 3
-Right_Backward_Pin = 35 #the internal Pi pin number that goes to snap 4
-Button_Pin = 38 #the internal Pi pin number that goes to snap 6
+Left_Forward_Pin = 35 #the internal Pi pin number that goes to snap 1
+Left_Backward_Pin = 31 #the internal Pi pin number that goes to snap 2
+Right_Forward_Pin = 26 #the internal Pi pin number that goes to snap 3
+Right_Backward_Pin = 21 #the internal Pi pin number that goes to snap 4
+Button_Pin = 18 #the internal Pi pin number that goes to snap 6
 
 #Setting up our pins
 GPIO.setmode(GPIO.BOARD)
