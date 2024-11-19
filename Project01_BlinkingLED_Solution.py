@@ -19,7 +19,7 @@ import RPi.GPIO as GPIO
 #Let's define variables so we can use them later
 # Variables are words that take on values within the code
 # This way, we can edit the value at the beginning and the changes flow through
-LED_Pin = 40 #the internal Pi pin number that goes to snap 7
+LED_Pin = 7 #the internal Pi pin number that goes to snap 7
 
 # For challenge 1, we can try different values here to blink in new patterns
 LED_On = 3 #duration of LED flash, seconds
