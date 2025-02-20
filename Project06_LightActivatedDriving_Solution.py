@@ -26,6 +26,8 @@ import time
 from time import sleep
 import RPi.GPIO as GPIO
 
+GPIO.setwarnings(False)
+
 #Let's define variables so we can use them later
 Left_Forward_Pin = 35 #the internal Pi pin number that goes to snap 1
 Left_Backward_Pin = 31 #the internal Pi pin number that goes to snap 2
@@ -47,7 +49,7 @@ GPIO.setup(Left_Forward_Pin, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(Left_Backward_Pin, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(Right_Forward_Pin, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(Right_Backward_Pin, GPIO.OUT, initial=GPIO.LOW)
-#Our input pin from the button
+#Our input pin from the phototransistor
 GPIO.setup(Photo_Pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 #Let's write some driving functions we can use later
@@ -127,3 +129,5 @@ while True: # Continuous outer while loop
         sleep(Wait_Time)
     else:
       break # Exits the loop after Max Search Time exceeded
+
+GPIO.cleanup()
