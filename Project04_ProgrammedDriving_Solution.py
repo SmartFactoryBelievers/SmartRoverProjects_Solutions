@@ -91,3 +91,5 @@ for n in range(1):
   drive_left_turn(Left_Turn_Time)
   drive_backward(Backward_Time)
   drive_right_turn(Right_Turn_Time)
+
+GPIO.cleanup()
