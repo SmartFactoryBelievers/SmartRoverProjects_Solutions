@@ -95,3 +95,6 @@ while True: #Looping over and over again
     
   # Wait 1 second to reset
   sleep(1)
+
+
+GPIO.cleanup()
