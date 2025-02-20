@@ -25,6 +25,8 @@
 from time import sleep
 import RPi.GPIO as GPIO
 
+GPIO.setwarnings(False)
+
 #Let's define variables so we can use them later
 A_Pin = 7 #the internal Pi pin number that goes to snap 7
 C_Pin = 18 #the internal Pi pin number that goes to snap 6
@@ -75,21 +77,24 @@ while True: #Looping over and over again
 
   # If A is pressed and C is not, let's blink the LED
   if read_selector_button(A_Pin) and not(read_selector_button(C_Pin)):
-    output_pin_on(LED_Pin, Pin_Off)
-    output_pin_off(LED_Pin, Pin_On)
+    output_pin_on(LED_Pin, Pin_On)
+    output_pin_off(LED_Pin, Pin_Off)
     
   # If C is pressed and A is not, let's buzz the buzzer
   if read_selector_button(C_Pin) and not(read_selector_button(A_Pin)):
-    output_pin_on(Buzzer_Pin, Pin_Off)
-    output_pin_off(Buzzer_Pin, Pin_On)
+    output_pin_on(Buzzer_Pin, Pin_On)
+    output_pin_off(Buzzer_Pin, Pin_Off)
     
   # By pressing B, both A and C will be pressed.
   # Replace the ?? with the LED_Pin and Buzzer_Pin variables and then uncomment
   if read_selector_button(A_Pin) and read_selector_button(C_Pin):
-    output_pin_on(LED_Pin, Pin_Off)
-    output_pin_on(Buzzer_Pin, Pin_Off)
-    output_pin_off(LED_Pin, Pin_On)
-    output_pin_off(Buzzer_Pin, Pin_On)
+    output_pin_on(LED_Pin, Pin_On) # LED On
+    output_pin_on(LED_Pin, Pin_Off) # LED Off
+    output_pin_off(Buzzer_Pin, Pin_On) # Buzzer On
+    output_pin_off(Buzzer_Pin, Pin_On) # Buzzer Off
     
   # Wait 1 second to reset
   sleep(1)
+
+
+GPIO.cleanup()
