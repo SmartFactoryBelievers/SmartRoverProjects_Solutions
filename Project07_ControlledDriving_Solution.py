@@ -29,6 +29,8 @@ import time
 from time import sleep
 import RPi.GPIO as GPIO
 
+GPIO.setwarnings(False)
+
 #Let's define variables so we can use them later
 Left_Forward_Pin = 35 #the internal Pi pin number that goes to snap 1
 Left_Backward_Pin = 31 #the internal Pi pin number that goes to snap 2
@@ -109,7 +111,7 @@ while True: #Looping over and over again
     # For challenge 4, you can use a sleep delay and second if, else to see
     # whether A was pressed and released or held
     sleep(0.5)
-    #Press B and hold, check if still pressed after delay
+    #Press A and hold, check if still pressed after delay
     if GPIO.input(A_Pin) and not GPIO.input(A_Pin):
       drive_forward(Forward_Time)
       drive_backward(Backward_Time)
@@ -120,9 +122,10 @@ while True: #Looping over and over again
   # Only pressing C
   if GPIO.input(C_Pin) and not GPIO.input(A_Pin): #only pressing C
     # For challenge 4, you can use a sleep delay and second if, else to see
-    # whether C was pressed and released or held
-    Press_Time = button_press_timer(C_Pin) # For challenge 3
-    drive_backward(Backward_Time)
+    # whether B was pressed and released or held
+
+      Press_Time = button_press_timer(C_Pin) # For challenge 3
+      drive_backward(Backward_Time)
     
   # Pressing B, we can use timing to determine if it's released or held
   if GPIO.input(C_Pin) and GPIO.input(A_Pin):
@@ -133,3 +136,5 @@ while True: #Looping over and over again
     # Press B and released, not still pressed after delay
     else:
       drive_right_turn(Right_Turn_Time)
+
+GPIO.cleanup()

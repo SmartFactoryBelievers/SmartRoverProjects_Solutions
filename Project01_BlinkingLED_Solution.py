@@ -16,18 +16,20 @@
 from time import sleep
 import RPi.GPIO as GPIO
 
+GPIO.setwarnings(False)
+
 #Let's define variables so we can use them later
 # Variables are words that take on values within the code
 # This way, we can edit the value at the beginning and the changes flow through
 LED_Pin = 7 #the internal Pi pin number that goes to snap 7
 
 # For challenge 1, we can try different values here to blink in new patterns
-LED_On = 3 #duration of LED flash, seconds
-LED_Off = 1 #duration in between flashes, seconds
+LED_On = 0.2 #duration of LED flash, seconds
+LED_Off = 0.1 #duration in between flashes, seconds
 
 #Setting up our pin
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(LED_Pin, GPIO.OUT, initial=GPIO.LOW) #Output pin, start off
+GPIO.setup(LED_Pin, GPIO.OUT, initial=GPIO.LOW) #Output pin
 
 while True: #Looping over and over again
   sleep(LED_Off) #Keep LED off for defined duration
@@ -35,4 +37,4 @@ while True: #Looping over and over again
   sleep(LED_On) #Keep LED on for defined duration
   GPIO.output(LED_Pin, GPIO.LOW) #Turn lED off
  
-print(list(f(10)))
+GPIO.cleanup()

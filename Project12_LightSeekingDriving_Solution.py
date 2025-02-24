@@ -28,6 +28,8 @@ import cv2
 # Numpy is a great numerical tools package to help with the math required
 import numpy as np
 
+GPIO.setwarnings(False)
+
 #Let's define variables so we can use them later
 Left_Forward_Pin = 35 #the internal Pi pin number that goes to snap 1
 Left_Backward_Pin = 31 #the internal Pi pin number that goes to snap 2
@@ -161,6 +163,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
           drive_backward(Backward_Time)
 
         count = count + 1 # Increment the counter for the modulo
+        
       else: # If max search time exceeded, spin and look elsewhere for challenge 3
         drive_left_turn(Left_Turn_Time * 2)
         # Reset the timer for a new searching period
@@ -168,5 +171,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         print('here')
     
   sleep(Wait_Time)
+  
   #Clearing image cache
   rawCapture.truncate(0)
+
+GPIO.cleanup()
