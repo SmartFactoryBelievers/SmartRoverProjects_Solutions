@@ -21,12 +21,14 @@
 from time import sleep
 import RPi.GPIO as GPIO
 
+GPIO.setwarnings(False)
+
 #Let's define variables so we can use them later
 Button_Pin = 18 #the internal Pi pin number that goes to snap 6
 LED_Pin = 26 #the internal Pi pin number that goes to snap 3
 
 # For challenge 1, we can try different values here to blink in new patterns
-LED_On = 3 #duration of LED flash, seconds
+LED_On = 1 #duration of LED flash, seconds
 LED_Off = 1 #duration in between flashes, seconds
 
 #Setting up our pins
@@ -40,7 +42,7 @@ while True: #Looping over and over again
 # It is checking if the button is pressed by reading tha value of the pin
 # If the button pin reads True (on), then it executes the indented code
 
-if GPIO.input(Button_Pin) == False: #When the button is pressed, blink LED
+if GPIO.input(Button_Pin) == True: #When the button is pressed, blink LED
   sleep(LED_Off) #Keep LED off for defined duration
   GPIO.output(LED_Pin, GPIO.HIGH) #Turn LED on
   sleep(LED_On) #Keep LED on for defined duration
@@ -50,3 +52,5 @@ if GPIO.input(Button_Pin) == False: #When the button is pressed, blink LED
 else:
   print('Button not pressed')
   sleep(1)
+
+GPIO.cleanup()
