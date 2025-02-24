@@ -25,12 +25,12 @@ from picamera import PiCamera
 # Numpy is a great numerical tools package to help with the math required
 import numpy as np
 
+GPIO.setwarnings(False)
+
 #Let's define variables so we can use them later
-#------------------------ CHALLENGE 1: SWAP THE POSITION OF THE LED AND BUZZER IN THE CODE & ON THE ROVER ----------------------
 LED_Pin = 21 #the internal Pi pin number that goes to snap 4
 Buzzer_Pin = 26 #the internal Pi pin number that goes to snap 3
 Button_Pin = 18 #the internal Pi pin number that goes to snap 6
-#-------------------------------------- END OF CHALLENGE 1 ------------------------------------------
 
 #Setting up our pins
 GPIO.setmode(GPIO.BOARD)
@@ -42,7 +42,8 @@ GPIO.setup(Button_Pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # Setting up camera for analysis and to emphasize colors
 camera = PiCamera()
-camera.resolution = (640, 480)camera.framerate = 30
+camera.resolution = (640, 480)
+camera.framerate = 30
 sleep(2) #let the cameraera settle
 camera.iso = 100
 camera.shutter_speed = camera.exposure_speed
@@ -78,6 +79,7 @@ Col_Margin = 0.8
 #Looping with different images to determine object colors upon button press
 print('Ready to take photo')
 while True:
+  
   # Press the push button to capture an image
   if GPIO.input(Button_Pin) == True:
     sleep(2)
@@ -87,9 +89,9 @@ while True:
     
     # For each of red, green, and blue, calculate the most prominent color through means
     for col in range(0,3):
-    RGB_Array.append(np.mean(Image[:,:,col]-np.mean(Image)-np.mean(Noise[:,:,col])))
-    # For challenge 3, replace the True with the logical statement for the margin
+      RGB_Array.append(np.mean(Image[:,:,col]-np.mean(Image)-np.mean(Noise[:,:,col])))
     
+    # For challenge 3, replace the True with the logical statement for the margin
     if np.max(RGB_Array) * Col_Margin > np.median(RGB_Array):
       Color = RGB_Text[np.argmax(RGB_Array)]
       print(Color)
@@ -122,3 +124,5 @@ while True:
     # For challenge 4, update Last_Color after outputs
     Last_Color = Color
     print('Ready to take photo')
+
+GPIO.cleanup()
