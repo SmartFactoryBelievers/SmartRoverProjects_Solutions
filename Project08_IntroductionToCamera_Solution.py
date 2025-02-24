@@ -30,6 +30,8 @@
 from picamera import PiCamera, Color
 from time import sleep
 
+GPIO.setwarnings(False)
+
 # Setting up the camera
 camera = PiCamera()
 
@@ -74,7 +76,6 @@ for i in range(100):
 camera.stop_preview()
 
 # For challenge 6, try iterating through IMAGE_EFFECTS, EXPOSURE_MODES, and AWB_MODES
-
 camera.start_preview()
 for effect in camera.EXPOSURE_MODES:
   camera.annotate_text = '%s' %effect
@@ -83,3 +84,5 @@ for effect in camera.EXPOSURE_MODES:
 camera.stop_preview()
 
 camera.close()
+
+GPIO.cleanup()
